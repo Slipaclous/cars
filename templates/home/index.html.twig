@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+  <h1 class="text-center titre  m-3">Bienvenue dans notre Garage </h1>
+ 
+<div class="container">
+<div class="row">
+<ul class="cards">
+  {% for marques in marques %}
+    
+   
+    <li class="cards_item">
+      <div class="carde text-center">
+        <div class="card_image text-center"><img src="{{marques.logo}}" height="150"></div>
+        <div class="card_content">
+          <h2 class="card_title">{{marques.nom}}</h2>
+          <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa recusandae reiciendis, excepturi autem ab maxime rem repudiandae, cum quidem placeat quisquam quaerat expedita odit, consectetur voluptatibus fugit? Eaque deleniti sed, itaque, excepturi impedit..</p>
+          <a href="{{path('carmark',{id:marques.id})}}" class="bout card_btn">Voir nos voitures {{marques.nom}}</a>
+        </div>
+      </div>
+    </li>
+  
+  {% endfor %}
+  </ul>
+  </div>
+  </div>
+  
+</div>
+    
+{% endblock %}

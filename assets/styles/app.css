@@ -1,0 +1,344 @@
+body {
+    background-color: rgb(239, 237, 237);
+}
+.card {
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+    border-radius: 30px;
+    background: #000000;
+  
+  }
+  
+  
+  .card-body {
+    background: #000000;
+  }
+  .carr{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    }
+  .card-footer {
+    background: #171717;
+    border-bottom-left-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
+  }
+   .prixx{
+    font-size: 55px;
+    margin: 250px;
+    text-decoration:underline ;
+   }
+  .card-header {
+    border-radius: 30px !important;
+    border: 0px;
+    background: #2a2626;
+  }
+  .titre{
+    font-size: 60px;
+    color: black;
+  }
+  .card-header img {
+    border-radius: 30px;
+  
+  }
+  
+  @import url(https://fonts.googleapis.com/css?family=Lato);
+   /* CSS pour la page _cars.html.twig */
+  .container {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+ }
+   .card {
+    margin: 1em;
+ }
+   .card .card-img-top {
+    position: relative;
+    z-index: 2;
+    width: 302px;
+    height: 222px;
+    transform: translateY(48%);
+    transition: 0.5s;
+ }
+   .card .card-body {
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 1.25em;
+    height: 320px;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.056), 0 6.7px 5.3px rgba(0, 0, 0, 0.081), 0 12.5px 10px rgba(0, 0, 0, 0.1), 0 22.3px 17.9px rgba(0, 0, 0, 0.119), 0 41.8px 33.4px rgba(0, 0, 0, 0.144), 0 100px 80px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%);
+    transition: 0.5s;
+    opacity: 0;
+ }
+   .card .card-body .card-title {
+    margin: 0 0 0.75em 0;
+    font-size: 1.25em;
+    font-weight: bold;
+    line-height: 1.2;
+    
+ }
+   .card .card-body .card-text {
+    margin: 0 0 1em 0;
+ }
+   .card .card-body .btn {
+    padding: 0.375em 0.75em;
+    color: black;
+    text-decoration: none;
+    line-height: 1.5;
+    border: 1px solid black;
+    border-radius: 0.25em;
+    transition: 0.5s;
+ }
+   .card .card-body .btn:hover {
+    color: rgb(255, 255, 255);
+    background: black;
+    opacity: 1;
+ }
+   .card:hover .card-img-top {
+    transform: translateY(1%);
+    opacity: 1;
+ }
+   .card:hover .card-body {
+    transform: translateY(0);
+    opacity: 0.7;
+ }
+  /* Fin de la css pour _cars */
+
+  /* Carousel */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    color: #343a40;
+    line-height: 1;
+  }
+  .carousel-container {
+    width: 800px;
+    height: 265px;
+    margin: 100px auto;
+    position: relative;  
+  }
+  /* Make the images invisible by default */
+  *,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --unhover-border-color: rgba(0, 0, 0, 0.5);
+  --unhover-text-color: rgba(255, 255, 255, 0.5);
+  --unhover-background-color: rgba(0, 0, 0, 0.5);
+
+  --hover-border-color: rgba(0, 0, 0, 0.8);
+  --hover-text-color: rgba(255, 255, 255, 0.8);
+  --hover-background-color: rgba(0, 0, 0, 0.8);
+
+  --transition-delay: 0.5s;
+}
+
+.carousel {
+  position: relative;
+  width: 30vw;
+  height: 20vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-0%);
+}
+
+.slider-button {
+  font-size: 1rem;
+  padding: 5px 1rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--unhover-background-color);
+  border: 2px solid var(--unhover-border-color);
+  color: var(--unhover-text-color);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.slider-button-prev {
+  left: 2rem;
+}
+
+.slider-button-next {
+  right: 2rem;
+}
+
+.slider-button:hover,
+.slider-button:focus {
+  background-color: var(--hover-background-color);
+  border: 2px solid var(--hover-border-color);
+  color: var(--hover-text-color);
+}
+
+ul.slides {
+  list-style-type: none;
+  height: 100%;
+  width: 100%;
+}
+
+li.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity var(--transition-delay);
+  transition-delay: var(--transition-delay);
+}
+
+.slide > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+li.slide[data-active-slide] {
+  opacity: 1;
+}
+
+.slides-circles {
+  display: flex;
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.slides-circles > div {
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+  border: 3px solid white;
+  border-radius: 50%;
+  transition: background-color var(--transition-delay);
+  transition-delay: var(--transition-delay);
+}
+
+.slides-circles > div[data-active-slide] {
+  background-color: white;
+}
+
+  .logocard{
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  card{
+    background-color: #c8a087;
+    width: 150px;
+  }
+  .logo{
+    height: 50px;
+    margin: 10px;
+  }
+
+  /* css des marques */
+ 
+  
+  h1 {
+      font-size: 24px;
+      font-weight: 400;
+      text-align: center;
+  }
+  
+  .card{
+    background: linear-gradient(to bottom left, #2f2c2c 40%, #c8a087 100%);
+  }
+ 
+  .bout {
+    color: #ffffff;
+    padding: 0.8rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+  }
+  
+  .bout:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cards_item {
+    display: flex;
+    padding: 1rem;
+  }
+  
+  @media (min-width: 40rem) {
+    .cards_item {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 56rem) {
+    .cards_item {
+      width: 33.3333%;
+    }
+  }
+  
+  .carde {
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 450px;
+    width: 450px;
+  }
+  
+  .card_content {
+    padding: 1rem;
+    background: linear-gradient(to bottom left, #2f2c2c 40%, #c8a087 100%);
+    height: 100%;
+  }
+  
+  .card_title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+  }
+  
+  .card_text {
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;    
+    font-weight: 400;
+  }
+  .made_by{
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 35px;
+    text-align: center;
+  }

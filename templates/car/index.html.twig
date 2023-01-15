@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CarController!{% endblock %}
+
+{% block body %}
+    <h1 class="titre text-center">Our cars</h1>
+    <div class="container-fluid col-10">
+    <div class="row">
+        {% for car in cars %}
+            {% include "car/_cars.html.twig" %}
+    </div>
+        {% endfor %}
+       
+        </div>
+{% endblock %}

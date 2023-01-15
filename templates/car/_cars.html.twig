@@ -1,0 +1,33 @@
+{% set url = path("carpage",{'slug':car.slug}) %}
+
+
+
+<div class="col-md-4 text-white">
+    <div class="card bg-dark mb-3">
+        <div class="card-header text-center">
+
+
+            <h3>{{car.Marque.nom}}</h3>
+
+
+
+        </div>
+        <img src="images/cover/{{car.cover}}" class="rounded mx-auto d-block" 
+            alt="Image de la voiture" height='200'>
+        <div class="card-body card-car ">
+            <div class="card-title text-center ">
+                <h4>{{car.nom}}</h4>
+            </div>
+            <p class="card-text ">
+                <p>-</strong>{{car.kilometrage}} km</p>
+                <p>-Puissance : {{car.puissance}} CH</p>
+                <p>-Carburant : {{car.carburant}}</p>
+                <p>-Année : {{car.anneeCirculation | date('d/m/Y')}}</p>
+                <h4 class="text-center">{{ car.prix|format_currency('EUR', locale='fr') }}</h4>
+            </p>
+            
+        </div>
+        <div class="text-center m-5">
+                <a href="{{url}}" class="bout ">Découvrir la voiture</a>
+            </div>
+    </div>

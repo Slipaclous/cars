@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{path('homepage')}}">Garage Gauthier</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{path('homepage')}}">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('carspage')}}">Cars</a>
+        </li>
+       
+      </ul>
+      <ul class="navbar-nav ms-auto me-5 ">
+          {% if app.user %}
+
+          <li class="nav-item dropdown text-white">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+              id="accountDropdownLink">
+              {{app.user.email}}
+
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
+              <a href="{{path('newCar')}}" class="dropdown-item">Ajouter une voiture</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Mon compte</a>
+              <a href="#" class="dropdown-item">Modifier mon profil</a>
+              <div class="dropdown-divider"></div>
+              <a href="{{path('account_logout')}}" class="dropdown-item">Déconnexion</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{{path('account_login')}}" class="nav-link">Connexion</a>
+          </li>
+          {% endif %}
+    </div>
+  </div>
+</nav>

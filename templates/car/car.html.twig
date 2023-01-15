@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<img src="" alt="">
+
+<div class="carr" >
+    <img src="../images/cover/{{car.cover}}" width='' height='400' class="" alt="">
+    <h1 class="text-center prixx">{{ car.prix|format_currency('EUR', locale='fr') }}</h1>
+</div >
+    <h1 class="text-center titre">{{car.Marque.nom}}  {{car.nom}}</h1>
+<h3 class="text-center border m-4">Informations</h3>
+    <div class="container-fluid logocard  text-center text-white">
+    
+        <card text-center>
+            <img src="../images/icons/kilometrage.png" class="logo" alt="">
+            <h5 class="">Kilométrage</h5>
+            <p> <strong>{{car.kilometrage}} km</strong> </p>
+        </card>
+        <card text-center>
+            <img src="../images/icons/cylindre.png" class="logo" alt="">
+            <h5 class="">Cylindrée</h5>
+            <p> <strong>{{car.cylindree}}</strong> </p>
+        </card>
+        <card text-center>
+            <img src="../images/icons/puissance.png" class="logo" alt="">
+            <h5 class="">puissance</h5>
+            <p> <strong>{{car.puissance}} ch</strong> </p>
+        </card>
+        <card text-center>
+            <img src="../images/icons/carburant.png" class="logo" alt="">
+            <h5 class="">Carburant</h5>
+            <p> <strong>{{car.carburant}}</strong> </p>
+        </card>
+        <card text-center>
+            <img src="../images/icons/transmission.png" class="logo" alt="">
+            <h5 class="">transmission</h5>
+            <p> <strong>{{car.transmission}}</strong> </p>
+        </card>
+        <card text-center>
+            <img src="../images/icons/date.png" class="logo" alt="">
+            <h5 class="">Mise en circulation</h5>
+            <p><strong>{{car.anneeCirculation | date('d/m/Y')}}</strong>  </p>
+        </card>
+        <card text-center>
+            <img src="../images/icons/proprio.png" class="logo" alt="">
+            <h5 class="">Nombre de propriétaires</h5>
+            <p> <strong>{{car.nbProprio}}</strong> </p>
+        </card>
+    </div>
+
+
+    <h3 class="text-center border m-4">Options</h3>
+    <p class="text-center">{{car.optionCar}}</p>
+    <h3 class="text-center border m-4">Description</h3>
+    <p class="text-center mb-5">{{car.description}}</p>
+
+
+    <div class="carousel">
+        <button class="slider-button slider-button-prev" data-slide-direction="prev">&#8592</button>
+        <button class="slider-button slider-button-next" data-slide-direction="next">&#8594</button>
+  {% for images in car.Images %}
+        <ul class="slides">
+            <li class="slide" data-active-slide>
+            <img src="{{images.imgCar}}" alt="Nature Image #1" />
+            </li>
+        </ul>
+       
+  {% endfor %}                
+       <div class="slides-circles">
+            <div data-active-slide></div>
+            <div></div>
+            <div></div>
+        </div>
+        </div>
+
+        <div class="gestion rounded mx-auto text-center">
+                {% if ( is_granted('ROLE_ADMIN')) %}
+                <a href="{{path('editCar',{'slug': car.slug})}}" class="btn btn-warning mx-2">Modification de
+                    l'annonce</a>
+                <a href="{{path('carDelete',{'slug': car.slug})}}" class="btn btn-danger mx-2">Supression de
+                    l'annonce</a>
+            </div>
+            {% endif %}
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+   const buttons = document.querySelectorAll("[data-slide-direction]");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const offset = button.dataset.slideDirection === "next" ? 1 : -1;
+    changeSlide(offset);
+  });
+});
+
+const changeSlide = (offset) => {
+  const slides = document.querySelector(".slides");
+  const activeSlide = slides.querySelector("[data-active-slide]");
+  let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+  newIndex =
+    newIndex < 0
+      ? slides.children.length - 1
+      : newIndex === slides.children.length
+      ? 0
+      : newIndex;
+  slides.children[newIndex].dataset.activeSlide = true;
+  delete activeSlide.dataset.activeSlide;
+
+  const circles = document.querySelector(".slides-circles");
+  const activeCircle = circles.querySelector("[data-active-slide]");
+  circles.children[newIndex].dataset.activeSlide = true;
+  delete activeCircle.dataset.activeSlide;
+};
+
+setInterval(changeSlide.bind(null, 1), 6000);
+
+    </script>
+{% endblock %}
