@@ -44,7 +44,7 @@ class AppFixtures extends Fixture
         for($v=0;$v <rand(1,5);$v++)
         {
           $cars = new Cars();
-          $cylindree=[1,4,1,7,1,9];
+          $cylindree=[1.4,1.7,1.9];
           $carburant=['essence','diesel','LPG'];
           $transmission=['avant','arrière'];
           $cars->setNom($faker->word())

@@ -92,23 +92,13 @@ class CarsType extends ApplicationType
             ->add('marque',EntityType::class,[
                 'class'=>Marques::class,
                 'choice_label'=>'nom',
-                'required' => false,
-                
-                
-                
+                'required' => false,    
             ])
-    
-           
             ->add('images', CollectionType::class, [
                 'entry_type' => ImageType::class,
-
-                
-                'allow_add' => true, //Permet d'ajouter des éléments et surtout d'avoir data_prototype
-                'allow_delete' => true 
-                
-                
-            ])
-        ;
+                'allow_add' => true,
+                'allow_delete' => true  
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

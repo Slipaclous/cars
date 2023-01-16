@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<img src="" alt="">
-
 <div class="carr" >
     <img src="../images/cover/{{car.cover}}" width='' height='400' class="" alt="">
     <h1 class="text-center prixx">{{ car.prix|format_currency('EUR', locale='fr') }}</h1>

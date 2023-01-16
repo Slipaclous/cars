@@ -3,7 +3,7 @@
 {% block body %}
 
 
-<div class="row">
+<div class="row justify-content-center">
 {% for cars in marques.cars %}
 {% set url = path("carpage",{'slug':cars.slug}) %}
 <div class="col-md-4 text-white">

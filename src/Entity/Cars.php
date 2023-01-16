@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CarsRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: CarsRepository::class)]
@@ -20,6 +21,7 @@ class Cars
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(min: 5, max: 110, minMessage: "Le nom doit faire plus de 5 caractères", maxMessage:"Le nom ne doit pas faire plus de 120 caractères")]
     private ?string $nom = null;
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
@@ -51,6 +53,7 @@ class Cars
     private ?int $nbProprio = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length(min: 50, minMessage:"Votre description doit faire plus de 50 caractères")]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT)]

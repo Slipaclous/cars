@@ -152,7 +152,9 @@ class CarController extends AbstractController
             'images'=>$img
         ]);
     }
-
+    /**
+     * Suppression de voiture
+     */
     #[Route('/car/{slug}/delete', name:"carDelete")]
     #[Security("(is_granted('ROLE_ADMIN'))",message:'Cette annonce ne vous appartient pas')]
     public function delete(EntityManagerInterface $manager,Cars $cars):Response
